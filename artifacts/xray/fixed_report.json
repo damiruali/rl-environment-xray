@@ -1,0 +1,1670 @@
+{
+  "report_version": "1.0",
+  "generated_at": "2026-09-11T08:46:07.840262+00:00",
+  "input": "artifacts/trajectories/fixed_env.jsonl",
+  "input_sha256": "3a5e64000074ca378ad3b5ea3e9a3842e69b7ac4833615f4d7b8dcfd5b34e1c5",
+  "environment": "support-preflight-fixed",
+  "health": 100,
+  "status": "PASS",
+  "decision": "ELIGIBLE FOR A SMALL TRAINING EXPERIMENT",
+  "deductions": {},
+  "score_is_heuristic": true,
+  "scope": "Configured diagnostics on supplied trajectories only; not safety certification.",
+  "coverage": {
+    "label": "Observed trajectory coverage",
+    "states": 53,
+    "transitions": 75,
+    "unique_transitions": 59,
+    "episodes": 13,
+    "terminal_states": 8,
+    "actions_observed": [
+      "add_internal_note",
+      "check_refund_policy",
+      "escalate_ticket",
+      "get_billing_history",
+      "get_customer",
+      "get_ticket",
+      "issue_refund",
+      "resolve_ticket",
+      "search_knowledge_base",
+      "send_customer_reply"
+    ],
+    "total_state_coverage_percent": null,
+    "unvisited_branches": "unknown: no exhaustive reference graph"
+  },
+  "reachability": {
+    "scope": "observed rollouts only",
+    "successful_episodes": 8,
+    "observed_success_path": true,
+    "global_reachability": "unknown",
+    "exhaustive_reference_provided": false
+  },
+  "findings": [],
+  "episodes": [
+    {
+      "episode_id": "fixed-eval-00",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 6,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-eval-01",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 7,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "escalate_ticket",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-eval-02",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 6,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-eval-03",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 7,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "escalate_ticket",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-eval-04",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 6,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-eval-05",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "steps": 7,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "escalate_ticket",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-repeat-policy",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 6,
+      "reward": 0.0,
+      "success": false,
+      "truncated": false,
+      "actions": [
+        "check_refund_policy",
+        "check_refund_policy",
+        "check_refund_policy",
+        "check_refund_policy",
+        "check_refund_policy",
+        "check_refund_policy"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-repeat-search",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 6,
+      "reward": 0.0,
+      "success": false,
+      "truncated": false,
+      "actions": [
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "search_knowledge_base",
+        "search_knowledge_base"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-premature-close",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 1,
+      "reward": 0.0,
+      "success": false,
+      "truncated": false,
+      "actions": [
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-hidden-auto",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 4,
+      "reward": 0.8,
+      "success": false,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_billing_history",
+        "check_refund_policy",
+        "issue_refund"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-hidden-manual",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 4,
+      "reward": 0.4,
+      "success": false,
+      "truncated": false,
+      "actions": [
+        "get_customer",
+        "get_billing_history",
+        "check_refund_policy",
+        "issue_refund"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-happy-path",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 9,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_ticket",
+        "get_customer",
+        "get_billing_history",
+        "search_knowledge_base",
+        "check_refund_policy",
+        "issue_refund",
+        "add_internal_note",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    },
+    {
+      "episode_id": "fixed-probe-approved-path",
+      "source": "scripted_probe",
+      "model": null,
+      "steps": 6,
+      "reward": 1.0,
+      "success": true,
+      "truncated": false,
+      "actions": [
+        "get_billing_history",
+        "check_refund_policy",
+        "escalate_ticket",
+        "issue_refund",
+        "send_customer_reply",
+        "resolve_ticket"
+      ]
+    }
+  ],
+  "provenance": {
+    "model": 6,
+    "scripted_probe": 7
+  },
+  "graph_view": {
+    "height": 305,
+    "nodes": [
+      {
+        "id": "aa7b58fe4600f019b4fc",
+        "label": "S0",
+        "x": 85,
+        "y": 100,
+        "critical": false
+      },
+      {
+        "id": "95b623fbde4c3f6e047c",
+        "label": "S1",
+        "x": 230,
+        "y": 100,
+        "critical": false
+      },
+      {
+        "id": "7aa6efd9d59bed6d48c7",
+        "label": "S2",
+        "x": 375,
+        "y": 100,
+        "critical": false
+      },
+      {
+        "id": "71c4f390e36cd49ce96e",
+        "label": "S3",
+        "x": 520,
+        "y": 100,
+        "critical": false
+      },
+      {
+        "id": "1719f6096628597c8617",
+        "label": "S4",
+        "x": 665,
+        "y": 100,
+        "critical": false
+      },
+      {
+        "id": "276bf95f6dd2a4f51cc4",
+        "label": "S5",
+        "x": 810,
+        "y": 100,
+        "critical": false
+      }
+    ],
+    "edges": [
+      {
+        "a": {
+          "id": "aa7b58fe4600f019b4fc",
+          "label": "S0",
+          "x": 85,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "aa7b58fe4600f019b4fc",
+          "label": "S0",
+          "x": 85,
+          "y": 100,
+          "critical": false
+        },
+        "loop": true,
+        "label": "get_ticket (+0)",
+        "action": "get_ticket",
+        "reward": 0.0,
+        "critical": false
+      },
+      {
+        "a": {
+          "id": "aa7b58fe4600f019b4fc",
+          "label": "S0",
+          "x": 85,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "95b623fbde4c3f6e047c",
+          "label": "S1",
+          "x": 230,
+          "y": 100,
+          "critical": false
+        },
+        "loop": false,
+        "label": "get_billing_history (+0.2)",
+        "action": "get_billing_history",
+        "reward": 0.2,
+        "critical": false
+      },
+      {
+        "a": {
+          "id": "95b623fbde4c3f6e047c",
+          "label": "S1",
+          "x": 230,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "7aa6efd9d59bed6d48c7",
+          "label": "S2",
+          "x": 375,
+          "y": 100,
+          "critical": false
+        },
+        "loop": false,
+        "label": "check_refund_policy (+0.2)",
+        "action": "check_refund_policy",
+        "reward": 0.2,
+        "critical": false
+      },
+      {
+        "a": {
+          "id": "7aa6efd9d59bed6d48c7",
+          "label": "S2",
+          "x": 375,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "71c4f390e36cd49ce96e",
+          "label": "S3",
+          "x": 520,
+          "y": 100,
+          "critical": false
+        },
+        "loop": false,
+        "label": "issue_refund (+0.4)",
+        "action": "issue_refund",
+        "reward": 0.4,
+        "critical": false
+      },
+      {
+        "a": {
+          "id": "71c4f390e36cd49ce96e",
+          "label": "S3",
+          "x": 520,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "1719f6096628597c8617",
+          "label": "S4",
+          "x": 665,
+          "y": 100,
+          "critical": false
+        },
+        "loop": false,
+        "label": "send_customer_reply (+0.2)",
+        "action": "send_customer_reply",
+        "reward": 0.2,
+        "critical": false
+      },
+      {
+        "a": {
+          "id": "1719f6096628597c8617",
+          "label": "S4",
+          "x": 665,
+          "y": 100,
+          "critical": false
+        },
+        "b": {
+          "id": "276bf95f6dd2a4f51cc4",
+          "label": "S5",
+          "x": 810,
+          "y": 100,
+          "critical": false
+        },
+        "loop": false,
+        "label": "resolve_ticket (+0)",
+        "action": "resolve_ticket",
+        "reward": 0.0,
+        "critical": false
+      }
+    ]
+  },
+  "example_episode": "fixed-eval-00",
+  "example_trajectory": [
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 1,
+      "state_id": "aa7b58fe4600f019b4fc",
+      "observable_state_id": "cb3136c0062511ea0a86",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [],
+        "turn": 0,
+        "accumulated_reward": 0,
+        "terminal": false
+      },
+      "action": "get_ticket",
+      "action_args": {},
+      "requested_action_args": {},
+      "next_state_id": "aa7b58fe4600f019b4fc",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [],
+        "turn": 1,
+        "accumulated_reward": 0.0,
+        "terminal": false
+      },
+      "reward": 0.0,
+      "done": false,
+      "terminated": false,
+      "truncated": false,
+      "verifier": {
+        "business_success": false,
+        "rubric_success": false,
+        "refund_completed": false,
+        "customer_notified": false,
+        "ticket_resolved": false
+      },
+      "tool_result": {
+        "ok": true
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 2,
+      "state_id": "aa7b58fe4600f019b4fc",
+      "observable_state_id": "cb3136c0062511ea0a86",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": false,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [],
+        "turn": 1,
+        "accumulated_reward": 0.0,
+        "terminal": false
+      },
+      "action": "get_billing_history",
+      "action_args": {},
+      "requested_action_args": {},
+      "next_state_id": "95b623fbde4c3f6e047c",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate"
+        ],
+        "turn": 2,
+        "accumulated_reward": 0.2,
+        "terminal": false
+      },
+      "reward": 0.2,
+      "done": false,
+      "terminated": false,
+      "truncated": false,
+      "verifier": {
+        "business_success": false,
+        "rubric_success": false,
+        "refund_completed": false,
+        "customer_notified": false,
+        "ticket_resolved": false
+      },
+      "tool_result": {
+        "ok": true
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 3,
+      "state_id": "95b623fbde4c3f6e047c",
+      "observable_state_id": "a35764d9263b98374625",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": false
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate"
+        ],
+        "turn": 2,
+        "accumulated_reward": 0.2,
+        "terminal": false
+      },
+      "action": "check_refund_policy",
+      "action_args": {},
+      "requested_action_args": {},
+      "next_state_id": "7aa6efd9d59bed6d48c7",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility"
+        ],
+        "turn": 3,
+        "accumulated_reward": 0.4,
+        "terminal": false
+      },
+      "reward": 0.2,
+      "done": false,
+      "terminated": false,
+      "truncated": false,
+      "verifier": {
+        "business_success": false,
+        "rubric_success": false,
+        "refund_completed": false,
+        "customer_notified": false,
+        "ticket_resolved": false
+      },
+      "tool_result": {
+        "ok": true,
+        "policy": "Verify duplicate, verify eligibility, refund, notify, resolve. Escalate if approval is required."
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 4,
+      "state_id": "7aa6efd9d59bed6d48c7",
+      "observable_state_id": "f28f560c9cdb2682f75e",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "pending",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility"
+        ],
+        "turn": 3,
+        "accumulated_reward": 0.4,
+        "terminal": false
+      },
+      "action": "issue_refund",
+      "action_args": {},
+      "requested_action_args": {},
+      "next_state_id": "71c4f390e36cd49ce96e",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility",
+          "refund"
+        ],
+        "turn": 4,
+        "accumulated_reward": 0.8,
+        "terminal": false
+      },
+      "reward": 0.4,
+      "done": false,
+      "terminated": false,
+      "truncated": false,
+      "verifier": {
+        "business_success": false,
+        "rubric_success": false,
+        "refund_completed": true,
+        "customer_notified": false,
+        "ticket_resolved": false
+      },
+      "tool_result": {
+        "ok": true
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 5,
+      "state_id": "71c4f390e36cd49ce96e",
+      "observable_state_id": "abdc813e728146aa1246",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": false
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility",
+          "refund"
+        ],
+        "turn": 4,
+        "accumulated_reward": 0.8,
+        "terminal": false
+      },
+      "action": "send_customer_reply",
+      "action_args": {
+        "message": "We've confirmed the duplicate $20 charge and refunded the extra payment. The refund is complete."
+      },
+      "requested_action_args": {
+        "message": "We've confirmed the duplicate $20 charge and refunded the extra payment. The refund is complete."
+      },
+      "next_state_id": "1719f6096628597c8617",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility",
+          "notification",
+          "refund"
+        ],
+        "turn": 5,
+        "accumulated_reward": 1.0,
+        "terminal": false
+      },
+      "reward": 0.2,
+      "done": false,
+      "terminated": false,
+      "truncated": false,
+      "verifier": {
+        "business_success": false,
+        "rubric_success": false,
+        "refund_completed": true,
+        "customer_notified": true,
+        "ticket_resolved": false
+      },
+      "tool_result": {
+        "ok": true
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "episode_id": "fixed-eval-00",
+      "task_id": "duplicate-00",
+      "environment": "support-preflight-fixed",
+      "source": "model",
+      "model": "qwen/qwen3.8-27b",
+      "step": 6,
+      "state_id": "1719f6096628597c8617",
+      "observable_state_id": "7af46b101a6c1531e8b9",
+      "observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": false
+      },
+      "internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "open",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility",
+          "notification",
+          "refund"
+        ],
+        "turn": 5,
+        "accumulated_reward": 1.0,
+        "terminal": false
+      },
+      "action": "resolve_ticket",
+      "action_args": {},
+      "requested_action_args": {},
+      "next_state_id": "276bf95f6dd2a4f51cc4",
+      "next_observable_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "resolved",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true,
+          "refund_requires_manual_approval": false
+        },
+        "terminal": true
+      },
+      "next_internal_state": {
+        "ticket": {
+          "id": "duplicate-00",
+          "status": "resolved",
+          "customer_id": "synthetic-01",
+          "issue_type": "duplicate_charge",
+          "customer_message": "I was charged twice for my subscription. Refund the extra payment."
+        },
+        "customer": {
+          "plan": "pro",
+          "region": "KZ",
+          "risk_flag": false
+        },
+        "billing": {
+          "transactions": [
+            {
+              "id": "tx1",
+              "amount": 20
+            },
+            {
+              "id": "tx2",
+              "amount": 20
+            }
+          ],
+          "duplicate_charge": true,
+          "refund_status": "completed",
+          "duplicate_detected": true,
+          "eligibility_verified": true
+        },
+        "support": {
+          "approval_state": "not_requested",
+          "escalation_state": "none",
+          "internal_notes": [],
+          "customer_replied": true
+        },
+        "hidden": {
+          "refund_requires_manual_approval": false
+        },
+        "milestones": [
+          "duplicate",
+          "eligibility",
+          "notification",
+          "refund"
+        ],
+        "turn": 6,
+        "accumulated_reward": 1.0,
+        "terminal": true
+      },
+      "reward": 0.0,
+      "done": true,
+      "terminated": true,
+      "truncated": false,
+      "verifier": {
+        "business_success": true,
+        "rubric_success": true,
+        "refund_completed": true,
+        "customer_notified": true,
+        "ticket_resolved": true
+      },
+      "tool_result": {
+        "ok": true
+      }
+    }
+  ],
+  "experimental_hodge": {
+    "experimental": true,
+    "affects_gate": false,
+    "residual_energy_ratio": 2.995076202385518e-23,
+    "orthogonality_error": 2.1916276785615445e-11,
+    "solver_stop_code": 1,
+    "iterations": 22,
+    "strongest_edges": [
+      {
+        "source": "1879efb163a95ef12974",
+        "target": "332b39e26c676b283b78",
+        "action": "check_refund_policy",
+        "residual": -4.477335169283947e-12
+      },
+      {
+        "source": "1879efb163a95ef12974",
+        "target": "332b39e26c676b283b78",
+        "action": "check_refund_policy",
+        "residual": -4.477335169283947e-12
+      },
+      {
+        "source": "385bc9840cd802e9dbb0",
+        "target": "1879efb163a95ef12974",
+        "action": "get_billing_history",
+        "residual": 3.954669924866039e-12
+      },
+      {
+        "source": "385bc9840cd802e9dbb0",
+        "target": "1879efb163a95ef12974",
+        "action": "get_billing_history",
+        "residual": 3.954669924866039e-12
+      },
+      {
+        "source": "332b39e26c676b283b78",
+        "target": "9c353f0266e11f74a04f",
+        "action": "escalate_ticket",
+        "residual": 2.229938456110858e-12
+      }
+    ],
+    "limitation": "Algebraic cycle-space residual is not a directed exploitable-cycle proof; gradient is not necessarily business progress."
+  }
+}

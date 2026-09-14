@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RL Environment X-Ray — FAIL</title>
+<style>
+:root{color-scheme:dark;--bg:#0a111b;--panel:#101d2d;--muted:#98aac0;--cyan:#62dac9;--red:#ff7185}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#e3ecf8;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1230px;margin:auto;padding:40px 42px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263648;padding-bottom:24px}
+.logo{font-size:13px;letter-spacing:2px;color:var(--cyan)}h1{font-size:38px;line-height:1.2;margin:18px 0 10px;letter-spacing:-1px}h2{font-size:20px;margin:0 0 16px}h3{font-size:17px;margin:8px 0}
+p{margin:8px 0}.muted,small{color:var(--muted)}.badge{padding:6px 12px;border:1px solid #3a536b;border-radius:6px;font:12px ui-monospace,monospace}.FAIL,.CRITICAL{color:var(--red)}.PASS{color:var(--cyan)}.WARNING,.REVIEW{color:#f6c86b}
+.hero{display:grid;grid-template-columns:220px 1fr;gap:28px;margin:28px 0}.score,.panel{background:var(--panel);border:1px solid #28394e;border-radius:12px;padding:24px}.number{font-size:76px;line-height:1.1;font-weight:650}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}.metric{padding:18px;background:#0f1a28;border-left:2px solid var(--cyan)}.metric b{font-size:27px;display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{margin-bottom:22px}.finding{border-left:3px solid #344760;padding:0 0 0 16px;margin:22px 0}.finding.CRITICAL{border-color:var(--red)}.finding.WARNING{border-color:#f6c86b}.finding p,.finding h3{color:#dce6f1}.finding small{display:block;margin-top:10px}.finding p{font-size:14px}.finding details{color:var(--muted);font-size:12px}
+pre{white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,monospace;background:#09131e;padding:14px;border-radius:6px;max-height:320px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #273548}th{color:var(--muted);font-weight:500}.scroll{overflow-x:auto}svg{width:100%;min-width:700px}svg text{font:10px ui-monospace,monospace;fill:#b9cbdf}.foot{font-size:12px;color:var(--muted);margin-top:25px;overflow-wrap:anywhere}a{color:var(--cyan)}summary{cursor:pointer}section{scroll-margin-top:24px}.callout{border-left:3px solid var(--cyan);padding-left:15px}
+@media(max-width:800px){main{padding:24px 16px}.grid,.hero{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}h1{font-size:30px}header{display:block}}
+</style></head><body><main>
+<header><div class="logo">RL ENVIRONMENT X-RAY <span class="muted">/ PREFLIGHT 001</span></div><span class="badge">SYNTHETIC · LOCAL · NO TRAINING</span></header>
+<h1>Test the environment.<br><span class="muted">Then train the agent.</span></h1>
+<p class="muted">support-preflight-broken · evidence-scoped engineering diagnostic</p>
+<section id="verdict" class="hero"><div class="score"><span class="muted">HEALTH HEURISTIC</span><div class="number FAIL">24</div><span class="muted">/ 100 · not a probability</span></div>
+<div class="panel"><span class="badge FAIL">FAIL</span><h2 style="margin-top:18px">DO NOT TRAIN</h2><p>Configured diagnostics on supplied trajectories only; not safety certification.</p><p class="muted">Evidence: 6 model episodes · 7 scripted_probe episodes.</p><p class="muted">Global reachability and total state-space coverage remain unknown.</p></div></section>
+<div class="metrics"><div class="metric"><b>54</b>observed states</div><div class="metric"><b>78</b>observed transitions</div><div class="metric"><b>8</b>successful episodes</div><div class="metric"><b>4</b>finding types</div></div>
+<section id="graph" class="panel"><h2>Witnessed transition graph</h2><p class="muted">Example: broken-probe-repeat-policy. Internal business-state projection: clock and accumulated reward excluded, hidden fields retained. Red = witnessed positive cycle.</p><div class="scroll"><svg viewBox="0 0 960 240" role="img" aria-label="Observed episode graph">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#738eae"/></marker></defs>
+<path d="M70,84 C15,20 155,20 100,84" fill="none" stroke="#ff7185" stroke-width="2" marker-end="url(#arrow)"/><text x="85" y="33" text-anchor="middle">check_refund_policy (+0.2)</text>
+<circle cx="85" cy="100" r="23" fill="#102534" stroke="#ff7185" stroke-width="2"/><text x="85" y="104" text-anchor="middle">S0</text><title>749216f4764906e61b43</title>
+<text x="310" y="94" style="font-size:20px;fill:#ff8b9b">Same business state. More reward.</text><text x="310" y="126" style="font-size:15px">6 witnessed actions · accumulated +1.20</text><text x="310" y="153" style="font-size:13px">Business success: False · source: scripted_probe</text>
+</svg></div></section>
+<section id="findings" class="panel"><h2>Findings & corrective actions</h2>
+<article class="finding CRITICAL"><span class="badge CRITICAL">CRITICAL</span><h3>Positive reward cycle witnessed</h3><p>A contiguous rollout returned to the same internal business state with positive reward and no success. Clock/accounting are excluded; the finite turn cap bounds exploitation.</p><small>FIX → Pay once for verified progress, never for unchanged reads.</small><details><summary>Inspect recorded evidence</summary><pre>{
+  "cycles": [
+    {
+      "actions": [
+        "check_refund_policy"
+      ],
+      "episode_id": "broken-probe-repeat-policy",
+      "occurrences": 6,
+      "source": "scripted_probe",
+      "states": [
+        "749216f4764906e61b43",
+        "749216f4764906e61b43"
+      ],
+      "steps": [
+        1,
+        1
+      ],
+      "total_reward": 0.2
+    },
+    {
+      "actions": [
+        "search_knowledge_base"
+      ],
+      "episode_id": "broken-probe-repeat-search",
+      "occurrences": 6,
+      "source": "scripted_probe",
+      "states": [
+        "749216f4764906e61b43",
+        "749216f4764906e61b43"
+      ],
+      "steps": [
+        1,
+        1
+      ],
+      "total_reward": 0.2
+    },
+    {
+      "actions": [
+        "search_knowledge_base"
+      ],
+      "episode_id": "broken-probe-happy-path",
+      "occurrences": 1,
+      "source": "scripted_probe",
+      "states": [
+        "cf4638b63fb1478d3751",
+        "cf4638b63fb1478d3751"
+      ],
+      "steps": [
+        4,
+        4
+      ],
+      "total_reward": 0.2
+    }
+  ],
+  "occurrences": 13,
+  "sources": [
+    "scripted_probe"
+  ]
+}</pre></details></article><article class="finding CRITICAL"><span class="badge CRITICAL">CRITICAL</span><h3>Reward rubric accepts a failed business task</h3><p>The independent business verifier disagrees with the environment success rubric.</p><small>FIX → Require completed refund, customer notification and correct closure together.</small><details><summary>Inspect recorded evidence</summary><pre>{
+  "examples": [
+    {
+      "episode_id": "broken-probe-premature-close",
+      "reward": 1.0,
+      "source": "scripted_probe",
+      "step": 1,
+      "verifier": {
+        "business_success": false,
+        "customer_notified": false,
+        "refund_completed": false,
+        "rubric_success": true,
+        "ticket_resolved": true
+      }
+    }
+  ],
+  "occurrences": 1
+}</pre></details></article><article class="finding WARNING"><span class="badge WARNING">WARNING</span><h3>Possible hidden-state dependency</h3><p>Same observable snapshot and action arguments produced different outcomes. Partial observability, stochasticity or an incomplete projection may explain this; it does not prove non-Markov dynamics.</p><small>FIX → Expose approval requirements, or explicitly model and test the belief/history state.</small><details><summary>Inspect recorded evidence</summary><pre>{
+  "conflicting_groups": 1,
+  "examples": [
+    [
+      {
+        "action": "issue_refund",
+        "episode_id": "broken-probe-hidden-auto",
+        "reward": 0.0,
+        "source": "scripted_probe",
+        "step": 4,
+        "tool_result": {
+          "ok": true
+        }
+      },
+      {
+        "action": "issue_refund",
+        "episode_id": "broken-probe-hidden-manual",
+        "reward": 0.0,
+        "source": "scripted_probe",
+        "step": 4,
+        "tool_result": {
+          "error": "manual_approval_required",
+          "ok": false
+        }
+      },
+      {
+        "action": "issue_refund",
+        "episode_id": "broken-probe-happy-path",
+        "reward": 0.0,
+        "source": "scripted_probe",
+        "step": 6,
+        "tool_result": {
+          "ok": true
+        }
+      }
+    ]
+  ]
+}</pre></details></article><article class="finding WARNING"><span class="badge WARNING">WARNING</span><h3>Outcome differs across observed histories</h3><p>Different action histories precede the same visible state/action but different observed outcomes. Small observational samples establish association only, not causation.</p><small>FIX → Replay matched histories while controlling hidden fields; expand observation if needed.</small><details><summary>Inspect recorded evidence</summary><pre>{
+  "groups": 1,
+  "history_paths": [
+    [
+      "get_ticket",
+      "get_billing_history",
+      "check_refund_policy"
+    ],
+    [
+      "get_customer",
+      "get_billing_history",
+      "check_refund_policy"
+    ],
+    [
+      "get_ticket",
+      "get_customer",
+      "get_billing_history",
+      "search_knowledge_base",
+      "check_refund_policy"
+    ]
+  ]
+}</pre></details></article></section>
+<section id="rollouts" class="panel"><h2>Rollout ledger</h2><div class="scroll"><table><thead><tr><th>Episode / provenance</th><th>Steps</th><th>Reward</th><th>Business success</th><th>Truncated</th></tr></thead><tbody><tr><td>broken-eval-00<br><small>model · qwen/qwen3.8-27b</small></td><td>6</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-eval-01<br><small>model · qwen/qwen3.8-27b</small></td><td>8</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-eval-02<br><small>model · qwen/qwen3.8-27b</small></td><td>6</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-eval-03<br><small>model · qwen/qwen3.8-27b</small></td><td>8</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-eval-04<br><small>model · qwen/qwen3.8-27b</small></td><td>6</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-eval-05<br><small>model · qwen/qwen3.8-27b</small></td><td>8</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-probe-repeat-policy<br><small>scripted_probe</small></td><td>6</td><td>1.2</td><td class="FAIL">False</td><td>False</td></tr><tr><td>broken-probe-repeat-search<br><small>scripted_probe</small></td><td>6</td><td>1.2</td><td class="FAIL">False</td><td>False</td></tr><tr><td>broken-probe-premature-close<br><small>scripted_probe</small></td><td>1</td><td>1.0</td><td class="FAIL">False</td><td>False</td></tr><tr><td>broken-probe-hidden-auto<br><small>scripted_probe</small></td><td>4</td><td>0.2</td><td class="FAIL">False</td><td>False</td></tr><tr><td>broken-probe-hidden-manual<br><small>scripted_probe</small></td><td>4</td><td>0.2</td><td class="FAIL">False</td><td>False</td></tr><tr><td>broken-probe-happy-path<br><small>scripted_probe</small></td><td>9</td><td>1.4</td><td class="PASS">True</td><td>False</td></tr><tr><td>broken-probe-approved-path<br><small>scripted_probe</small></td><td>6</td><td>1.2</td><td class="PASS">True</td><td>False</td></tr></tbody></table></div></section>
+<div class="grid"><section id="trajectory" class="panel"><h2>Example trajectory</h2><p class="muted">broken-probe-repeat-policy</p><table><tr><th>Step</th><th>Action</th><th>Reward</th></tr><tr><td>1</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr><tr><td>2</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr><tr><td>3</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr><tr><td>4</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr><tr><td>5</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr><tr><td>6</td><td>check_refund_policy</td><td class="FAIL">0.2</td></tr></table></section>
+<section id="scope" class="panel"><h2>What this report does not prove</h2><p>Total state coverage: <b>unknown</b>.</p><p>Unvisited branches: <b>unknown</b>.</p><p>No exhaustive reference model was supplied. A missing sampled success path is not proof of unreachability.</p><p>Heuristic deductions: {&#39;positive_reward_cycle&#39;: 30, &#39;goal_reward_mismatch&#39;: 30, &#39;possible_hidden_state&#39;: 8, &#39;history_association&#39;: 8}.</p><h3>Experimental graph residual</h3><p>Energy ratio: 0.052. Does not affect the gate.</p><p class="muted">Algebraic cycle-space residual is not a directed exploitable-cycle proof; gradient is not necessarily business progress.</p><p class="callout">No RL training was performed. Scripted probes test known incentives; they are not model-discovered exploits.</p></section></div>
+<footer class="foot">Generated 2026-09-11T08:46:07.805519+00:00<br>Input artifacts/trajectories/broken_env.jsonl<br>SHA-256 f87c91f3e90ca39ffafdb26779f9d607c81c9b19b658958c0556d6bc3b85c573<br>RL Environment X-Ray · prototype · standalone report, no external assets or telemetry</footer>
+</main></body></html>

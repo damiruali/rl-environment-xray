@@ -1,0 +1,250 @@
+{
+  "broken": {
+    "health": 24,
+    "status": "FAIL",
+    "decision": "DO NOT TRAIN",
+    "provenance": {
+      "model": 6,
+      "scripted_probe": 7
+    },
+    "coverage": {
+      "label": "Observed trajectory coverage",
+      "states": 54,
+      "transitions": 78,
+      "unique_transitions": 62,
+      "episodes": 13,
+      "terminal_states": 9,
+      "actions_observed": [
+        "add_internal_note",
+        "check_refund_policy",
+        "escalate_ticket",
+        "get_billing_history",
+        "get_customer",
+        "get_ticket",
+        "issue_refund",
+        "resolve_ticket",
+        "search_knowledge_base",
+        "send_customer_reply"
+      ],
+      "total_state_coverage_percent": null,
+      "unvisited_branches": "unknown: no exhaustive reference graph"
+    },
+    "findings": [
+      {
+        "code": "positive_reward_cycle",
+        "severity": "CRITICAL",
+        "title": "Positive reward cycle witnessed",
+        "detail": "A contiguous rollout returned to the same internal business state with positive reward and no success. Clock/accounting are excluded; the finite turn cap bounds exploitation.",
+        "evidence": {
+          "cycles": [
+            {
+              "episode_id": "broken-probe-repeat-policy",
+              "steps": [
+                1,
+                1
+              ],
+              "source": "scripted_probe",
+              "states": [
+                "749216f4764906e61b43",
+                "749216f4764906e61b43"
+              ],
+              "actions": [
+                "check_refund_policy"
+              ],
+              "total_reward": 0.2,
+              "occurrences": 6
+            },
+            {
+              "episode_id": "broken-probe-repeat-search",
+              "steps": [
+                1,
+                1
+              ],
+              "source": "scripted_probe",
+              "states": [
+                "749216f4764906e61b43",
+                "749216f4764906e61b43"
+              ],
+              "actions": [
+                "search_knowledge_base"
+              ],
+              "total_reward": 0.2,
+              "occurrences": 6
+            },
+            {
+              "episode_id": "broken-probe-happy-path",
+              "steps": [
+                4,
+                4
+              ],
+              "source": "scripted_probe",
+              "states": [
+                "cf4638b63fb1478d3751",
+                "cf4638b63fb1478d3751"
+              ],
+              "actions": [
+                "search_knowledge_base"
+              ],
+              "total_reward": 0.2,
+              "occurrences": 1
+            }
+          ],
+          "occurrences": 13,
+          "sources": [
+            "scripted_probe"
+          ]
+        },
+        "suggestion": "Pay once for verified progress, never for unchanged reads."
+      },
+      {
+        "code": "goal_reward_mismatch",
+        "severity": "CRITICAL",
+        "title": "Reward rubric accepts a failed business task",
+        "detail": "The independent business verifier disagrees with the environment success rubric.",
+        "evidence": {
+          "occurrences": 1,
+          "examples": [
+            {
+              "episode_id": "broken-probe-premature-close",
+              "step": 1,
+              "reward": 1.0,
+              "source": "scripted_probe",
+              "verifier": {
+                "business_success": false,
+                "rubric_success": true,
+                "refund_completed": false,
+                "customer_notified": false,
+                "ticket_resolved": true
+              }
+            }
+          ]
+        },
+        "suggestion": "Require completed refund, customer notification and correct closure together."
+      },
+      {
+        "code": "possible_hidden_state",
+        "severity": "WARNING",
+        "title": "Possible hidden-state dependency",
+        "detail": "Same observable snapshot and action arguments produced different outcomes. Partial observability, stochasticity or an incomplete projection may explain this; it does not prove non-Markov dynamics.",
+        "evidence": {
+          "conflicting_groups": 1,
+          "examples": [
+            [
+              {
+                "episode_id": "broken-probe-hidden-auto",
+                "step": 4,
+                "action": "issue_refund",
+                "reward": 0.0,
+                "tool_result": {
+                  "ok": true
+                },
+                "source": "scripted_probe"
+              },
+              {
+                "episode_id": "broken-probe-hidden-manual",
+                "step": 4,
+                "action": "issue_refund",
+                "reward": 0.0,
+                "tool_result": {
+                  "ok": false,
+                  "error": "manual_approval_required"
+                },
+                "source": "scripted_probe"
+              },
+              {
+                "episode_id": "broken-probe-happy-path",
+                "step": 6,
+                "action": "issue_refund",
+                "reward": 0.0,
+                "tool_result": {
+                  "ok": true
+                },
+                "source": "scripted_probe"
+              }
+            ]
+          ]
+        },
+        "suggestion": "Expose approval requirements, or explicitly model and test the belief/history state."
+      },
+      {
+        "code": "history_association",
+        "severity": "WARNING",
+        "title": "Outcome differs across observed histories",
+        "detail": "Different action histories precede the same visible state/action but different observed outcomes. Small observational samples establish association only, not causation.",
+        "evidence": {
+          "groups": 1,
+          "history_paths": [
+            [
+              "get_ticket",
+              "get_billing_history",
+              "check_refund_policy"
+            ],
+            [
+              "get_customer",
+              "get_billing_history",
+              "check_refund_policy"
+            ],
+            [
+              "get_ticket",
+              "get_customer",
+              "get_billing_history",
+              "search_knowledge_base",
+              "check_refund_policy"
+            ]
+          ]
+        },
+        "suggestion": "Replay matched histories while controlling hidden fields; expand observation if needed."
+      }
+    ],
+    "reachability": {
+      "scope": "observed rollouts only",
+      "successful_episodes": 8,
+      "observed_success_path": true,
+      "global_reachability": "unknown",
+      "exhaustive_reference_provided": false
+    }
+  },
+  "fixed": {
+    "health": 100,
+    "status": "PASS",
+    "decision": "ELIGIBLE FOR A SMALL TRAINING EXPERIMENT",
+    "provenance": {
+      "model": 6,
+      "scripted_probe": 7
+    },
+    "coverage": {
+      "label": "Observed trajectory coverage",
+      "states": 53,
+      "transitions": 75,
+      "unique_transitions": 59,
+      "episodes": 13,
+      "terminal_states": 8,
+      "actions_observed": [
+        "add_internal_note",
+        "check_refund_policy",
+        "escalate_ticket",
+        "get_billing_history",
+        "get_customer",
+        "get_ticket",
+        "issue_refund",
+        "resolve_ticket",
+        "search_knowledge_base",
+        "send_customer_reply"
+      ],
+      "total_state_coverage_percent": null,
+      "unvisited_branches": "unknown: no exhaustive reference graph"
+    },
+    "findings": [],
+    "reachability": {
+      "scope": "observed rollouts only",
+      "successful_episodes": 8,
+      "observed_success_path": true,
+      "global_reachability": "unknown",
+      "exhaustive_reference_provided": false
+    }
+  },
+  "paired_tasks": true,
+  "same_scripted_actions": true,
+  "model_trajectories_identical": false,
+  "training_performed": false
+}

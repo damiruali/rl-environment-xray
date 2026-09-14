@@ -1,0 +1,27 @@
+10:50:49    INFO running 1x2 rollouts on openai/gpt-oss-20b via the env-server elastic pool
+10:50:49    INFO results: artifacts/prime/smoke-v1
+10:50:50    INFO EnvServerPool up: address=tcp://127.0.0.1:50319 workers=1/inf multiplex=128 elastic=True
+10:50:52    INFO EnvServer up: taskset=support-preflight address=ipc:///tmp/vf-pool-_hussb3b/0
+10:50:52    INFO interception up: url=http://127.0.0.1:50321
+10:50:52    INFO interception pool: 1 server(s), multiplex=32
+10:50:52    INFO rollout start: id=61a348d0b64d46dcb049122b1606d431 task=0 harness=null runtime=subprocess
+10:50:54    INFO tool server '': http://127.0.0.1:50322/mcp
+10:51:02 WARNING model call failed: id=61a348d0b64d46dcb049122b1606d431 ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7049, Requested 2456. Please try again in 11.2875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:03 WARNING model call failed: id=61a348d0b64d46dcb049122b1606d431 ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6964, Requested 2461. Please try again in 10.6875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:04 WARNING model call failed: id=61a348d0b64d46dcb049122b1606d431 ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6832, Requested 2439. Please try again in 9.532499999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:04    INFO rollout done: id=61a348d0b64d46dcb049122b1606d431 task=0 reward=0.000 turns=6 stop=ProviderError
+10:51:04    INFO rollout start: id=6899e88aefd24a4e9019a1f9081153be task=0 harness=null runtime=subprocess
+10:51:06    INFO tool server '': http://127.0.0.1:50331/mcp
+10:51:08 WARNING model call failed: id=6899e88aefd24a4e9019a1f9081153be ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7441, Requested 1086. Please try again in 3.9525s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:09 WARNING model call failed: id=6899e88aefd24a4e9019a1f9081153be ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7366, Requested 1086. Please try again in 3.39s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:10 WARNING model call failed: id=6899e88aefd24a4e9019a1f9081153be ProviderError: upstream 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01khrqbdpgf1mr0b05nft0barm` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7237, Requested 1086. Please try again in 2.4225s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+10:51:10    INFO rollout done: id=6899e88aefd24a4e9019a1f9081153be task=0 reward=0.000 turns=2 stop=ProviderError
+10:51:10    INFO EnvServer down: taskset=support-preflight
+10:51:10    INFO interception down: url=http://127.0.0.1:50321
+10:51:10    INFO EnvServerPool down

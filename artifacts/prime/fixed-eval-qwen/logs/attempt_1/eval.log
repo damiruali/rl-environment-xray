@@ -1,0 +1,27 @@
+11:14:23    INFO running 6x1 rollouts on qwen/qwen3.8-27b via the env-server elastic pool
+11:14:23    INFO results: artifacts/prime/fixed-eval-qwen
+11:14:24    INFO EnvServerPool up: address=tcp://127.0.0.1:51127 workers=1/inf multiplex=128 elastic=True
+11:14:25    INFO EnvServer up: taskset=support-preflight address=ipc:///tmp/vf-pool-v1347gm8/0
+11:14:25    INFO interception up: url=http://127.0.0.1:51129
+11:14:25    INFO interception pool: 1 server(s), multiplex=32
+11:14:25    INFO rollout start: id=73bc97ad9ad144969a7ecd9ab3a74f41 task=0 harness=null runtime=subprocess
+11:14:29    INFO tool server '': http://127.0.0.1:51135/mcp
+11:15:50    INFO rollout done: id=73bc97ad9ad144969a7ecd9ab3a74f41 task=0 reward=1.000 turns=6 stop=done
+11:15:50    INFO rollout start: id=961eaab1aa4a4f97956f7fcbdb3ee1d1 task=1 harness=null runtime=subprocess
+11:15:52    INFO tool server '': http://127.0.0.1:51181/mcp
+11:17:47    INFO rollout done: id=961eaab1aa4a4f97956f7fcbdb3ee1d1 task=1 reward=1.000 turns=7 stop=done
+11:17:47    INFO rollout start: id=4bc123a167944d92a5f2ca5019c47c3c task=2 harness=null runtime=subprocess
+11:17:50    INFO tool server '': http://127.0.0.1:51234/mcp
+11:19:17    INFO rollout done: id=4bc123a167944d92a5f2ca5019c47c3c task=2 reward=1.000 turns=6 stop=done
+11:19:17    INFO rollout start: id=f6321b8d1eac4bef85488c2cedf1d863 task=3 harness=null runtime=subprocess
+11:19:20    INFO tool server '': http://127.0.0.1:51267/mcp
+11:21:13    INFO rollout done: id=f6321b8d1eac4bef85488c2cedf1d863 task=3 reward=1.000 turns=7 stop=done
+11:21:13    INFO rollout start: id=df15dce197844b88bd8772de1e4807d7 task=4 harness=null runtime=subprocess
+11:21:16    INFO tool server '': http://127.0.0.1:51324/mcp
+11:22:44    INFO rollout done: id=df15dce197844b88bd8772de1e4807d7 task=4 reward=1.000 turns=6 stop=done
+11:22:44    INFO rollout start: id=4b40530224de48c9ae255efcc92927d0 task=5 harness=null runtime=subprocess
+11:22:47    INFO tool server '': http://127.0.0.1:51372/mcp
+11:24:40    INFO rollout done: id=4b40530224de48c9ae255efcc92927d0 task=5 reward=1.000 turns=7 stop=done
+11:24:40    INFO EnvServer down: taskset=support-preflight
+11:24:40    INFO interception down: url=http://127.0.0.1:51129
+11:24:40    INFO EnvServerPool down

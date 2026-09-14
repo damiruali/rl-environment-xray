@@ -1,0 +1,12 @@
+10:46:31    INFO running 1x2 rollouts on openai/gpt-oss-20b via the env-server elastic pool
+10:46:31    INFO results: artifacts/prime/smoke-local
+10:46:32    INFO EnvServerPool up: address=tcp://127.0.0.1:50279 workers=1/inf multiplex=128 elastic=True
+10:46:33    INFO EnvServer up: taskset=support-preflight address=ipc:///tmp/vf-pool-s9wq_x7i/0
+10:46:33    INFO interception up: url=http://127.0.0.1:50281
+10:46:33    INFO interception pool: 1 server(s), multiplex=32
+10:46:33    INFO rollout start: id=3eb22f200bc942409bccdb3caada7191 task=0 harness=null runtime=subprocess
+10:49:36    INFO rollout done: id=3eb22f200bc942409bccdb3caada7191 task=0 reward=0.000 turns=0 stop=ToolsetError
+10:49:36    INFO rollout start: id=7223c323829c42eb99be7d189ee3d48b task=0 harness=null runtime=subprocess
+10:50:46 WARNING interrupted — cleaning up, please wait...
+10:50:46    INFO interception down: url=http://127.0.0.1:50281
+10:50:46 WARNING failed to send response: Socket operation on non-socket

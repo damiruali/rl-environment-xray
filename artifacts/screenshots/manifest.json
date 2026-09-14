@@ -1,0 +1,44 @@
+[
+  {
+    "file": "01-local-eval.png",
+    "source": "xray/index.html",
+    "selector": "#local-eval",
+    "description": "Real native V1 model eval ledger",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  },
+  {
+    "file": "02-broken-rollout.png",
+    "source": "xray/broken_model_only.html",
+    "selector": "#trajectory",
+    "description": "Actual model trajectory, not a scripted probe",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  },
+  {
+    "file": "03-positive-loop.png",
+    "source": "xray/broken_report.html",
+    "selector": "#graph",
+    "description": "Witnessed positive business-state cycle with provenance",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  },
+  {
+    "file": "04-xray-fail.png",
+    "source": "xray/broken_report.html",
+    "selector": null,
+    "description": "Broken pre-flight FAIL dashboard",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  },
+  {
+    "file": "05-fixed-environment.png",
+    "source": "xray/index.html",
+    "selector": "#fix",
+    "description": "Broken/fixed implementation rules",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  },
+  {
+    "file": "06-xray-pass.png",
+    "source": "xray/fixed_report.html",
+    "selector": null,
+    "description": "Fixed pre-flight scoped PASS dashboard",
+    "capture": "agent-browser 0.37.1 / Chromium; actual rendered HTML"
+  }
+]

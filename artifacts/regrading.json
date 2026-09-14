@@ -1,0 +1,91 @@
+{
+  "new_model_calls": 0,
+  "reason": "Final fixed rubric gates training score on business success; tool feedback unchanged.",
+  "all_recorded_scores_unchanged": true,
+  "episodes": [
+    {
+      "episode_id": "broken-eval-00",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "broken-eval-01",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "broken-eval-02",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "broken-eval-03",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "broken-eval-04",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "broken-eval-05",
+      "variant": "broken",
+      "progress_feedback": 1.2,
+      "final_training_score": 1.2,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-00",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-01",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-02",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-03",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-04",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    },
+    {
+      "episode_id": "fixed-eval-05",
+      "variant": "fixed",
+      "progress_feedback": 1.0,
+      "final_training_score": 1.0,
+      "same_numeric_score_as_live_eval": true
+    }
+  ]
+}

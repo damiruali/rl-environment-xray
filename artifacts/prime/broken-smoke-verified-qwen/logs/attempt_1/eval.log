@@ -1,0 +1,15 @@
+11:00:39    INFO running 1x2 rollouts on qwen/qwen3.8-27b via the env-server elastic pool
+11:00:39    INFO results: artifacts/prime/broken-smoke-verified-qwen
+11:00:41    INFO EnvServerPool up: address=tcp://127.0.0.1:50543 workers=1/inf multiplex=128 elastic=True
+11:00:42    INFO EnvServer up: taskset=support-preflight address=ipc:///tmp/vf-pool-ynsj2erm/0
+11:00:42    INFO interception up: url=http://127.0.0.1:50545
+11:00:42    INFO interception pool: 1 server(s), multiplex=32
+11:00:42    INFO rollout start: id=2bdd8d5a2cfa44a7bcffe531534a68a0 task=0 harness=null runtime=subprocess
+11:00:45    INFO tool server '': http://127.0.0.1:50552/mcp
+11:01:18    INFO rollout done: id=2bdd8d5a2cfa44a7bcffe531534a68a0 task=0 reward=1.200 turns=6 stop=done
+11:01:18    INFO rollout start: id=0cbb5e65a0264e4f966702b7a1e21ec8 task=0 harness=null runtime=subprocess
+11:01:21    INFO tool server '': http://127.0.0.1:50591/mcp
+11:02:47    INFO rollout done: id=0cbb5e65a0264e4f966702b7a1e21ec8 task=0 reward=1.200 turns=6 stop=done
+11:02:47    INFO EnvServer down: taskset=support-preflight
+11:02:47    INFO interception down: url=http://127.0.0.1:50545
+11:02:48    INFO EnvServerPool down

@@ -1,0 +1,1 @@
+{"redacted": true, "excluded_from_baseline": true, "ok": true, "model": "qwen/qwen3.8-27b", "error_types": [], "actions": ["get_ticket", "get_billing_history", "check_refund_policy", "issue_refund", "send_customer_reply", "resolve_ticket"], "usage": {"prompt_tokens": 10382, "completion_tokens": 189, "reasoning_tokens": 0}}

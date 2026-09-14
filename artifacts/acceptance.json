@@ -1,0 +1,30 @@
+{
+  "acceptance": "PASS",
+  "matched_task_ids": [
+    "duplicate-00",
+    "duplicate-01",
+    "duplicate-02",
+    "duplicate-03",
+    "duplicate-04",
+    "duplicate-05"
+  ],
+  "model_and_probe_evidence_separated": true,
+  "screenshots": 6,
+  "secret_scan": "no configured API key/token values found in inspected artifacts/source",
+  "native_reasoning_redacted": true,
+  "results": {
+    "broken": {
+      "model_episodes": 6,
+      "model_transitions": 42,
+      "health": 24,
+      "status": "FAIL"
+    },
+    "fixed": {
+      "model_episodes": 6,
+      "model_transitions": 39,
+      "health": 100,
+      "status": "PASS"
+    }
+  },
+  "scope": "Local acceptance; no training, no Hub push, no safety certification"
+}

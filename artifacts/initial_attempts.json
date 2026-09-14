@@ -1,0 +1,133 @@
+{
+  "excluded_from_final_comparison": true,
+  "reason": "Cloud default, missing tool-server entrypoint, provider errors, then macOS hidden .pth imports; documented engineering attempts, not training results.",
+  "runs": [
+    {
+      "run": "smoke",
+      "records": []
+    },
+    {
+      "run": "smoke-local",
+      "records": [
+        {
+          "redacted": true,
+          "excluded_from_baseline": true,
+          "ok": false,
+          "model": "openai/gpt-oss-20b",
+          "error_types": [
+            "ToolsetError"
+          ],
+          "actions": [],
+          "usage": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "reasoning_tokens": 0
+          }
+        }
+      ]
+    },
+    {
+      "run": "smoke-v1",
+      "records": [
+        {
+          "redacted": true,
+          "excluded_from_baseline": true,
+          "ok": false,
+          "model": "openai/gpt-oss-20b",
+          "error_types": [
+            "ProviderError"
+          ],
+          "actions": [
+            "get_ticket",
+            "check_refund_policy",
+            "get_billing_history",
+            "issue_refund",
+            "add_internal_note",
+            "issue_refund"
+          ],
+          "usage": {
+            "prompt_tokens": 7208,
+            "completion_tokens": 352,
+            "reasoning_tokens": 226
+          }
+        },
+        {
+          "redacted": true,
+          "excluded_from_baseline": true,
+          "ok": false,
+          "model": "openai/gpt-oss-20b",
+          "error_types": [
+            "ProviderError"
+          ],
+          "actions": [
+            "get_ticket",
+            "check_refund_policy"
+          ],
+          "usage": {
+            "prompt_tokens": 1123,
+            "completion_tokens": 85,
+            "reasoning_tokens": 42
+          }
+        }
+      ]
+    },
+    {
+      "run": "broken-smoke",
+      "records": [
+        {
+          "redacted": true,
+          "excluded_from_baseline": true,
+          "ok": false,
+          "model": "openai/gpt-oss-20b",
+          "error_types": [
+            "ProviderError"
+          ],
+          "actions": [
+            "get_ticket",
+            "check_refund_policy",
+            "get_billing_history",
+            "issue_refund",
+            "add_internal_note",
+            "issue_refund",
+            "get_ticket",
+            "escalate_ticket",
+            "issue_refund",
+            "add_internal_note",
+            "get_billing_history",
+            "add_internal_note"
+          ],
+          "usage": {
+            "prompt_tokens": 26931,
+            "completion_tokens": 767,
+            "reasoning_tokens": 543
+          }
+        }
+      ]
+    },
+    {
+      "run": "broken-smoke-qwen",
+      "records": [
+        {
+          "redacted": true,
+          "excluded_from_baseline": true,
+          "ok": true,
+          "model": "qwen/qwen3.8-27b",
+          "error_types": [],
+          "actions": [
+            "get_ticket",
+            "get_billing_history",
+            "check_refund_policy",
+            "issue_refund",
+            "send_customer_reply",
+            "resolve_ticket"
+          ],
+          "usage": {
+            "prompt_tokens": 10382,
+            "completion_tokens": 189,
+            "reasoning_tokens": 0
+          }
+        }
+      ]
+    }
+  ]
+}

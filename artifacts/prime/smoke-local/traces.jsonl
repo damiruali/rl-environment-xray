@@ -1,0 +1,1 @@
+{"redacted": true, "excluded_from_baseline": true, "ok": false, "model": "openai/gpt-oss-20b", "error_types": ["ToolsetError"], "actions": [], "usage": {"prompt_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0}}

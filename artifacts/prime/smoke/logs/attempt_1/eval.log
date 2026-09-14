@@ -1,0 +1,7 @@
+10:45:56    INFO running 1x2 rollouts on openai/gpt-oss-20b via the env-server elastic pool
+10:45:56    INFO results: artifacts/prime/smoke
+10:45:59    INFO EnvServerPool up: address=tcp://127.0.0.1:50273 workers=1/inf multiplex=128 elastic=True
+10:46:00    INFO EnvServer up: taskset=support-preflight address=ipc:///tmp/vf-pool-gpm4w8_r/0
+10:46:00    INFO EnvServer down: taskset=support-preflight
+10:46:28 WARNING interrupted — cleaning up, please wait...
+10:46:28    INFO EnvServerPool down

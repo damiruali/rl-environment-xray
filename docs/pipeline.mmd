@@ -1,0 +1,22 @@
+flowchart TD
+  A[Prime Verifiers v1 Taskset: support-preflight] --> B[Support agent: cheap model]
+  B --> C[MCP tool calls]
+  C --> D[Deterministic synthetic state transition]
+  D --> E[Reward + independent business verifier]
+  E --> B
+  E --> F[Typed rollout state and trajectory collector]
+  F --> G[Versioned JSONL: actions, states, reward, provenance]
+  P[Labelled scripted adversarial probes] --> G
+  G --> H[RL Environment X-Ray]
+  H --> I[NetworkX directed multigraph]
+  I --> J[SCC + witnessed cycles + consistency + scoped reachability]
+  I -. experimental, not a gate .-> K[Incidence gradient / residual]
+  J --> L[Standalone JSON / HTML report]
+  K --> L
+  L --> M{Preflight gate}
+  M -->|FAIL| N[Fix rewards / verifier / observation]
+  N --> A
+  M -->|REVIEW| O[Add controls and inspect warnings]
+  O --> G
+  M -->|Scoped PASS| Q[Eligible for a small RL experiment]
+  Q -. not executed in this demo .-> R[RL training]

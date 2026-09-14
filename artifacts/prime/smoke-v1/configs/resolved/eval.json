@@ -1,0 +1,105 @@
+{
+  "env": {
+    "id": "",
+    "taskset": {
+      "id": "support-preflight",
+      "task": {
+        "judges": [],
+        "stops": {},
+        "metrics": {},
+        "rewards": {},
+        "tools": {
+          "colocated": false,
+          "runtime": {
+            "type": "subprocess"
+          },
+          "url": null
+        }
+      },
+      "system_prompt": null,
+      "variant": "broken",
+      "num_tasks": 6,
+      "max_turns": 16
+    },
+    "timeout": {
+      "episode": null,
+      "finalize": null
+    },
+    "retries": {
+      "max_retries": 0,
+      "include": [],
+      "exclude": []
+    },
+    "max_concurrent_agents": 1,
+    "interception": {
+      "type": "elastic",
+      "multiplex": 32
+    },
+    "agent": {
+      "harness": {
+        "id": "null",
+        "env": {},
+        "forward_env": [],
+        "tool_timeout": 600.0,
+        "disabled_tools": null,
+        "skills": []
+      },
+      "runtime": {
+        "type": "subprocess"
+      },
+      "model": null,
+      "client": null,
+      "sampling": null,
+      "max_turns": null,
+      "max_input_tokens": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout": {
+        "setup": null,
+        "rollout": null,
+        "finalize": null,
+        "scoring": null
+      },
+      "retries": {
+        "max_retries": 0,
+        "include": [],
+        "exclude": []
+      }
+    }
+  },
+  "serve": {
+    "pool": {
+      "type": "elastic",
+      "max_workers": null,
+      "multiplex": 128
+    },
+    "address": null,
+    "max_concurrent": null
+  },
+  "run": {
+    "name": "support-preflight--openai--gpt-oss-20b--null--bbc13611",
+    "dir": "smoke-v1",
+    "attach": null
+  },
+  "model": "openai/gpt-oss-20b",
+  "client": {
+    "base_url": "https://api.groq.com/openai/v1",
+    "api_key_var": "GROQ_API_KEY",
+    "headers": {},
+    "type": "eval"
+  },
+  "sampling": {
+    "temperature": 0.0,
+    "top_p": null,
+    "reasoning_effort": "low",
+    "max_tokens": 600
+  },
+  "num_tasks": 1,
+  "num_rollouts": 2,
+  "shuffle": false,
+  "max_concurrent": 1,
+  "verbose": false,
+  "rich": null,
+  "push": false,
+  "output_dir": "artifacts/prime"
+}
