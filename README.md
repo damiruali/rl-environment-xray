@@ -163,17 +163,5 @@ Observed-state grouping — другой projection. Аргументы `action_
 Upstream MCP signature validation может отбросить лишний аргумент; это не security boundary.
 Никаких shell/SQL/HTTP действий в synthetic tools нет. Native subprocess — не OS sandbox.
 
-## Publication и LinkedIn
-
-- [Publication checklist](docs/PUBLISHING.md): состав Community Demo и отдельные условия
-  публикации среды в Prime Hub.
-- [LinkedIn RU](LINKEDIN_POST_RU.md) / [LinkedIn EN](LINKEDIN_POST_EN.md).
-- Реальные browser screenshots: `artifacts/screenshots/`, описание каждого — `manifest.json`.
-
-Известные ранние ошибки запуска сохранены в redacted `artifacts/prime/`; они не входят
-в baseline. GPT-OSS smoke дал provider/tool-format errors; окончательное matched comparison
-использует Qwen. Это не скрытая замена модели посередине сравнения.
-
-Следующие три продуктовых шага: адаптер к одному клиентскому agent runtime; mutation/probe
-generation с воспроизводимым replay; CI release policy с порогами покрытия и false positives,
+ми покрытия и false positives,
 измеряя engineering hours saved и дефекты, пойманные до training.
