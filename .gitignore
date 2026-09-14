@@ -8,6 +8,7 @@ __pycache__/
 dist/
 build/
 .presentation-build/
+.codex-finalizer/
 application-materials/
 .env
 .DS_Store
