@@ -7,5 +7,7 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.presentation-build/
+application-materials/
 .env
 .DS_Store
