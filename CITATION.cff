@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Agent X-Ray, please cite this repository."
+title: "Agent X-Ray: Preflight Diagnostics for Interactive AI Agent Environments"
+type: software
+authors:
+  - family-names: "Uali"
+    given-names: "Damir"
+    alias: "damiruali"
+repository-code: "https://github.com/damiruali/rl-environment-xray"
+url: "https://damiruali.github.io/rl-environment-xray/"
+license: Apache-2.0
+version: 0.1.0
+keywords:
+  - AI agents
+  - agent evaluation
+  - reinforcement learning environments
+  - LLM evaluation
+  - agent safety
