@@ -9,6 +9,8 @@ dist/
 build/
 .presentation-build/
 .codex-finalizer/
+.codex-build/
+output/
 application-materials/
 .env
 .DS_Store

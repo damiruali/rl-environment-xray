@@ -1,57 +1,57 @@
-# Agentic Sandbox X-Ray
+# Agent X-Ray
 
-**Сначала проверь среду. Потом обучай агента.**
+**Test the environment before you train or ship the agent.**
 
 [![Live demo](https://img.shields.io/badge/live-demo-0ea5e9)](https://damiruali.github.io/rl-environment-xray/)
 [![CI](https://github.com/damiruali/rl-environment-xray/actions/workflows/ci.yml/badge.svg)](https://github.com/damiruali/rl-environment-xray/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.12%2B-3776ab)](pyproject.toml)
 
-## Community Demo — бесплатно
+Agent X-Ray is an open-source preflight diagnostic for interactive AI-agent
+environments. It turns recorded trajectories into reviewable evidence about
+reward loops, reward-goal mismatch, hidden approvals, inconsistent transitions,
+reachability, and observed coverage.
 
-Это открытая демонстрация pre-flight диагностики интерактивных сред для AI-агентов.
-Она показывает, как до обучения или production-релиза обнаруживать reward hacking,
-недостижимые цели, скрытые approvals и расхождение reward с бизнес-результатом.
+It is deliberately narrow: **not an RL trainer, not a safety proof, and not a
+production security gateway.** It helps an engineer decide whether an environment
+is ready for more training or release testing.
 
-- **[Открыть live demo](https://damiruali.github.io/rl-environment-xray/)** — установка не нужна.
-- Исходный код, synthetic support environment, offline replay, CLI scanner, HTML/JSON
-  отчёты и тесты доступны бесплатно по лицензии Apache-2.0.
-- Демо работает без API-ключа и не отправляет данные наружу.
+[Open the live demo](https://damiruali.github.io/rl-environment-xray/) ·
+[Read the results](artifacts/RESULTS.md) ·
+[Architecture](docs/ARCHITECTURE.md) ·
+[Русская документация](README_RU.md)
 
-![Broken environment report](artifacts/screenshots/04-xray-fail.png)
+![Agent X-Ray failure report](artifacts/screenshots/04-xray-fail.png)
 
-### Freemium-модель
+## Why this exists
 
-| Community — бесплатно | Pilot / Enterprise — по договору |
-|---|---|
-| Synthetic environment и готовые trajectories | Подключение runtime и инструментов заказчика |
-| Offline scanner и локальные HTML/JSON-отчёты | Приватное/on-premise развёртывание |
-| Базовые graph/reward/coverage checks | Собственные сценарии, ACL и adversarial probes |
-| Запуск вручную и открытые тесты | CI release gates, аудит и сопровождение |
+An agent can look successful while exploiting a broken contract around it:
 
-Коммерческая часть — не ограничение открытого кода, а внедрение в реальные процессы,
-интеграции и доказательная проверка среды конкретного заказчика. Для обсуждения пилота
-можно открыть [GitHub Issue](https://github.com/damiruali/rl-environment-xray/issues/new).
+- repeat a harmless action to collect positive reward;
+- satisfy a rubric without completing the real task;
+- encounter an approval rule that the observation never disclosed;
+- receive different outcomes for apparently identical state/action pairs;
+- pass a small sample even though important paths were never exercised.
 
-Рабочий prototype pre-flight pipeline: синтетическая support-среда → реальная дешёвая
-модель через Prime Verifiers v1/MCP → trajectories → graph diagnostics → broken/fixed
-HTML-отчёты. Это **не RL trainer**, не математическое доказательство безопасности и не
-production security gateway.
+Agent X-Ray inspects the **environment and trajectory evidence**, not just the
+model's final answer.
 
-## Результаты в репозитории
+## What is included
 
-- [Demo overview](artifacts/xray/index.html): сравнение, model usage и ссылки на отчёты.
-- [Broken report](artifacts/xray/broken_report.html) / [Fixed report](artifacts/xray/fixed_report.html).
-- [Точные результаты](artifacts/RESULTS.md), [JSON-сравнение](artifacts/xray/comparison.json).
-- [Разбор файлов простыми словами](TECHNICAL_WALKTHROUGH.md).
+- a deterministic, fully synthetic support environment with broken and fixed variants;
+- offline replay of saved model trajectories;
+- explicitly labelled scripted diagnostic probes;
+- graph, reward, consistency, reachability, and coverage analyzers;
+- standalone HTML and JSON reports;
+- a CLI with CI-friendly exit codes;
+- regression tests and a reproducible public evidence bundle.
 
-В основных отчётах model rollouts и scripted adversarial probes помечены раздельно.
-Отдельные `broken_model_only.html` и `fixed_model_only.html` позволяют исключить пробы.
-Нельзя выдавать написанную нами последовательность действий за самостоятельно найденный
-моделью exploit. Награды broken/fixed имеют разный смысл; сравнивайте findings и business success.
+The demo separates model-generated rollouts from scripted probes. It never presents
+a hand-written exploit as behavior independently discovered by a model.
 
-## Запуск локально
+## Quick start
 
-Требуется Python 3.12+ и [uv](https://docs.astral.sh/uv/).
+Requirements: Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync --frozen --no-editable
@@ -59,109 +59,44 @@ uv run --no-sync python -m xray demo
 uv run --no-sync pytest -q
 ```
 
-В этой рабочей папке uv также доступен как `.bootstrap/bin/uv`, Python — `.venv/bin/python`.
-`demo` по умолчанию **offline**: читает сохранённые model trajectories, заново запускает
-детерминированные пробы и строит отчёты. Ключ/API/Prime login не нужны.
-Если model data отсутствуют, отчёт явно помечается SCRIPTED-ONLY, не симулирует модель.
+The default demo is offline. It needs no API key and makes no provider calls.
 
-Почему `--no-editable`: на данном Mac в Documents файлы `.pth` автоматически получили
-флаг hidden. Python 3.12.14 пропускал их, ломая editable imports. Обычная wheel-установка
-устранила проблему. После изменения исходников переустановите локальные пакеты:
-`uv sync --no-editable --reinstall-package support-preflight --reinstall-package rl-environment-xray`.
-
-### Новый live experiment
-
-`GROQ_API_KEY` должен быть задан в окружении, не в коде/репозитории. Не вставляйте ключ в
-команду, которая сохранится в истории shell. Live run делает API-запросы и может расходовать
-доступный лимит; не создаёт платную подписку, не запускает training и ничего не публикует.
+Scan a trajectory bundle directly:
 
 ```bash
-uv run --no-sync python -m xray demo --live --output artifacts/new-run
+uv run --no-sync python -m xray scan \
+  artifacts/trajectories/broken_env.jsonl \
+  --output artifacts/xray/broken_report \
+  --experimental-hodge
 ```
 
-Порядок: 1 task × 2 smoke rollouts, затем 6 tasks × 1 rollout для каждой версии.
-Модель `qwen/qwen3.8-27b`, temperature 0, reasoning none, max 600 output tokens/request,
-16 действий/эпизод, concurrency 1. Локальный relay ждёт при Groq 429, не рестартует эпизод.
-Ограничения relay: 300 upstream requests / 300k prompt tokens на native run, до четырёх
-повторов запроса, максимум 60 секунд ожидания за повтор, 15 минут timeout на native run.
-На маленьком TPM-лимите это может занять несколько минут. Стоимость от API не получена,
-поэтому `cost_usd: null`, не ноль. Token usage фиксируется отдельно.
-В `RESULTS.md` есть отдельная оценка по [публичному тарифу Groq на 11.09.2026](https://console.groq.com/docs/model/qwen/qwen3.8-27b):
-$0.80 / миллион input tokens и $4.00 / миллион output tokens. Это не фактический счёт,
-не включает ранние неудачные попытки и не учитывает кредиты/индивидуальные тарифы.
-Модель находится в preview; её будущая доступность не гарантируется.
+Exit codes are `0 = PASS`, `1 = FAIL`, and `2 = REVIEW` or invalid input. A pass is
+scoped to the supplied evidence; it is never a general safety certification.
 
-### Native Prime / Verifiers command
+## Evidence and limitations
 
-Проверенный синтаксис установленного V1 (`prime env init` уже V1, старый `--v1` не нужен):
+The bundled experiment compares the same synthetic task schedule across a deliberately
+broken environment and a corrected version. Exact model results, provenance, token usage,
+and known limitations are recorded in [artifacts/RESULTS.md](artifacts/RESULTS.md).
 
-```bash
-uv run --no-sync eval support-preflight \
-  -m qwen/qwen3.8-27b \
-  --client.base-url https://api.groq.com/openai/v1 \
-  --client.api-key-var GROQ_API_KEY \
-  --env.agent.harness.id null \
-  --env.agent.runtime.type subprocess \
-  --env.taskset.variant fixed \
-  -n 1 -r 2 -c 1 \
-  --sampling.temperature 0 --sampling.reasoning-effort none \
-  --sampling.max-tokens 600 --no-rich --no-push
-```
+Important boundaries:
 
-Прямая команда не включает наш 429 relay и стандартный Verifiers может сохранить полные
-model traces. Для redacted artifacts и backoff используйте `demo --live`.
-`null` здесь — встроенный MCP-capable chat harness, **не заглушка модели**.
-`subprocess` нужно указывать явно: default runtime текущей версии — облачный Prime.
+- sampled trajectories do not prove total state-space coverage;
+- temperature zero does not make provider rollouts deterministic;
+- the health score is a product heuristic, not a probability of safety;
+- the native subprocess runtime is not an operating-system sandbox;
+- no reinforcement-learning training is performed in this repository.
 
-### CI / scanner
+## Public-data boundary
 
-```bash
-uv run --no-sync python -m xray scan artifacts/trajectories/broken_env.jsonl \
-  --output artifacts/xray/broken_report --experimental-hodge
-# Expected exit 1: FAIL / DO NOT TRAIN
+Every included task, record, identifier, policy, and trajectory is synthetic. Employer,
+client, customer, and private project data are prohibited. See
+[Public Data Policy](docs/PUBLIC_DATA_POLICY.md) before contributing fixtures or traces.
 
-uv run --no-sync python -m xray scan artifacts/trajectories/fixed_env.jsonl \
-  --output artifacts/xray/fixed_report --experimental-hodge
-# Expected exit 0: scoped PASS
-```
+## Project direction
 
-`FAIL=1`, `REVIEW=2`, `PASS=0`; malformed/empty input returns 2, never PASS.
-Health: 100 −30 за уникальный critical code −8 за warning; это эвристика,
-не вероятность и не процент покрытия. Hodge не влияет на gate.
+Near-term work focuses on runtime adapters, reproducible mutation/probe generation,
+and evidence-backed CI release gates. See the [roadmap](ROADMAP.md) and
+[contribution guide](CONTRIBUTING.md).
 
-## Что намеренно сломано
-
-| Дефект | Broken | Fixed |
-|---|---|---|
-| Reward loop | Каждое policy/search чтение +0.2 | Только новый подтверждённый progress оплачивается один раз |
-| Goal mismatch | Закрытие +1 без возврата | Нельзя закрыть без refund + notification |
-| Hidden approval | Требование approval скрыто | Требование видно, simulated escalation даёт approval |
-
-Independent business success: duplicate refunded **AND** customer notified **AND** ticket
-resolved. Fixed shaping: .2 duplicate detection + .2 eligibility + .4 refund + .2 notification.
-Это tool feedback. Итоговый training score fixed — binary business success: без закрытия
-обращения он равен 0. Финальный guard проверен тестом и offline regrading сохранённых
-model trajectories; их оценки не изменились. Никакого обучения не было.
-Дополнительный unreachable-verifier defect не включён в demo: detector проверен на
-exhaustive reference fixture. На sampled support graph глобальная reachability — unknown.
-
-## Архитектура и доказательства
-
-Смотрите [ARCHITECTURE](docs/ARCHITECTURE.md), [Mermaid](docs/pipeline.mmd), [SVG-схему](docs/pipeline.svg),
-[исследование трёх сред и Hub](research/ENVIRONMENT_RESEARCH.md),
-[Hodge assumptions](docs/HODGE_NOTES.md), [README среды](environments/support_preflight/README.md).
-
-Реальные анализаторы: NetworkX MultiDiGraph, SCC, witnessed contiguous positive cycles,
-reward/business mismatch, transition consistency, association with history, scoped reachability
-и observed coverage. Эксперимент: sparse incidence least-squares gradient/residual.
-Без 2-complex не заявляем разделение curl/harmonic. Gradient не обязательно означает прогресс.
-
-State IDs исключают только clock и accumulated reward, но сохраняют hidden fields и paid
-milestones. Поэтому находим бизнес-циклы, а не утверждаем, что время повернулось назад.
-Observed-state grouping — другой projection. Аргументы `action_args` — исполненные engine
-аргументы; `requested_action_args` — сырые model arguments из V1 trace, когда доступны.
-Upstream MCP signature validation может отбросить лишний аргумент; это не security boundary.
-Никаких shell/SQL/HTTP действий в synthetic tools нет. Native subprocess — не OS sandbox.
-
-ми покрытия и false positives,
-измеряя engineering hours saved и дефекты, пойманные до training.
+Agent X-Ray is licensed under [Apache-2.0](LICENSE).
